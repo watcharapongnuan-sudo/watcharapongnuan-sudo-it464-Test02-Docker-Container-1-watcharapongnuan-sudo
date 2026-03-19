@@ -1,13 +1,13 @@
-name: ${PROJECT_NAME} # (0) กำหนดชื่อโปรเจคให้สอดคล้องกับ .env [4]
+name: ${watcharapongnuan-sudo} # (0) กำหนดชื่อโปรเจคให้สอดคล้องกับ .env [4]
 
 services:
   # 1. ฐานข้อมูล (Database)
   db-server:
     image: mariadb:10.6
-    container_name: ${MY_USERNAME}-db # (1.1) กำหนดชื่อคอนเทนเนอร์ให้สอดคล้องกับ .env [4]
+    container_name: ${watcharapongnuan-sudo}-db # (1.1) กำหนดชื่อคอนเทนเนอร์ให้สอดคล้องกับ .env [4]
     restart: always
     environment:
-      MARIADB_DATABASE: ${DB_NAME} # (1.2) กำหนดชื่อฐานข้อมูลให้สอดคล้องกับ .env [4]
+      MARIADB_DATABASE: ${watcharapongnuan-sudo} # (1.2) กำหนดชื่อฐานข้อมูลให้สอดคล้องกับ .env [4]
         MARIADB_ROOT_PASSWORD_FILE: /run/secrets/_________  # (1.3) เติมชื่อ Secret
           MARIADB_USER: ${DB_USER} # (1.4) กำหนดชื่อผู้ใช้ฐานข้อมูลให้สอดคล้องกับ .env [4]
             MARIADB_PASSWORD_FILE: /run/secrets/__________  # (1.5) เติมชื่อ Secret
@@ -76,8 +76,8 @@ volumes:
 
 configs:
   my-nginx-conf:
-file: ./_________/my-nginx.conf # (5.2) เติมชื่อโฟลเดอร์ที่เก็บไฟล์คอนฟิก
+file: ./nginx/my-nginx.conf # (5.2) เติมชื่อโฟลเดอร์ที่เก็บไฟล์คอนฟิก
 
 secrets:
   db_root_pass:
-file: __________/____________ # (5.3) เติมชื่อโฟลเดอร์และไฟล์ที่เก็บรหัสผ่านของฐานข้อมูล
+file: ./secrets/db_root_pass # (5.3) เติมชื่อโฟลเดอร์และไฟล์ที่เก็บรหัสผ่านของฐานข้อมูล
